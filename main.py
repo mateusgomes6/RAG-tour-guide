@@ -25,3 +25,12 @@ class TourismRAG:
             chain_type_kwargs={"prompt": self.qa_prompt},
             return_source_documents=True
         )
+    
+    def generate_itinerary(self, days, interests, budget):
+        prompt = f"""Crie um roteiro de {days} dias para um turista interessado em {interests} 
+        com orçamento {budget}. Inclua atrações principais, dicas de transporte, 
+        sugestões de restaurantes e horários recomendados."""
+        
+        response = self.qa_chain({"query": prompt})
+        return response['result']
+    
