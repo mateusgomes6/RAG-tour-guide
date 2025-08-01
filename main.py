@@ -34,3 +34,13 @@ class TourismRAG:
         response = self.qa_chain({"query": prompt})
         return response['result']
     
+    def get_attraction_info(self, attraction_name):
+        prompt = f"""Forneça informações detalhadas sobre {attraction_name}, incluindo:
+        - Descrição histórica
+        - Horário de funcionamento
+        - Preços de ingressos
+        - Dicas de visitação
+        - Avaliações de visitantes"""
+        
+        response = self.qa_chain({"query": prompt})
+        return response['result']
