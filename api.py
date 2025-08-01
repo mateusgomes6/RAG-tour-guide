@@ -18,3 +18,9 @@ async def generate_itinerary(request: ItineraryRequest):
         request.budget
     )
     return {"itinerary": itinerary}
+
+@app.get("/attraction/{attraction_name}")
+async def get_attraction_info(attraction_name: str):
+    rag = TourismRAG(load_vector_db())
+    info = rag.get_attraction_info(attraction_name)
+    return {"attraction_info": info}
