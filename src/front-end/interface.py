@@ -23,3 +23,13 @@ with tab1:
             }
         )
         st.write(response.json()["itinerary"])
+
+with tab2:
+    st.header("Informações sobre Atrações Turísticas")
+    
+    attraction = st.text_input("Nome da atração")
+    if st.button("Buscar Informações"):
+        response = requests.get(
+            f"http://backend:8000/attraction/{attraction}"
+        )
+        st.write(response.json()["attraction_info"])
