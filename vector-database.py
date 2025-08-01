@@ -9,3 +9,10 @@ def create_vector_db(documents):
     )
     splits = text_splitter.split_documents(documents)
     
+    vector_db = Chroma.from_documents(
+        documents=splits,
+        embedding=OpenAIEmbeddings(),
+        persist_directory="./vector_db"
+    )
+    vector_db.persist()
+    return vector_db
