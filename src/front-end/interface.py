@@ -15,7 +15,7 @@ with tab1:
     
     if st.button("Gerar Roteiro"):
         response = requests.post(
-            "http://backend:8000/generate_itinerary",
+            "http://localhost:8000/generate_itinerary",
             json={
                 "days": days,
                 "interests": interests,
